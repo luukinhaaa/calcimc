@@ -1,0 +1,87 @@
+<main class="hv-100 mx-auto">
+  <section class="w-100 mx-auto">
+    <article>
+      <header>
+        <h1 class="text-center mt-2 mb-0 fw-bolder">Calculadora de Índice de Massa Corporal (IMC)</h1>
+        <p class="text-center">Descubra mais sobre as funcionalidades de uma calculadora de IMC</p>
+      </header>
+
+      <div>
+        <h3>Explorando o peso através da fórmula do IMC:</h3>
+        <p>
+          O <strong>Índice de Massa Corporal (IMC)</strong> é uma medida utilizada para classificar o estado de peso de uma pessoa. Ele é calculado através da fórmula: <strong>peso</strong> (em kg) dividido pela <strong>altura</strong> (em metros) ao quadrado. Essa fórmula é aplicável tanto para homens quanto para mulheres e é especialmente indicada para adultos.
+        </p>
+
+        <p>
+          Para obter medidas precisas, é recomendado <strong>pesar-se</strong> pela manhã com a bexiga e o reto vazios, em jejum e utilizando apenas roupas íntimas.
+        </p>
+      </div>
+    </article>
+
+    <section class="form d-flex justify-content-center align-items-center">
+      <form class="col-xs-6 col-md-6">
+        <div>
+          <div class="row w-75 mx-auto">
+            <label class="mt-2 fw-bolder">Peso em Quilogramas:</label>
+            <input
+              type="text"
+              [maxLength]="5"
+              currencyMask
+              [options]="{}"
+              class="form-control"
+              placeholder="(exemplo: 85)"
+              [(ngModel)]="weight"
+              name="weight"
+            />
+          </div>
+
+          <div class="row w-75 mx-auto">
+            <label class="mt-2 fw-bolder">Altura em Metros:</label>
+            <input
+              maxlength="3"
+              type="text"
+              class="form-control "
+              currencyMask
+              [options]="{}"
+              [(ngModel)]="height"
+              name="height"
+              placeholder="(exemplo: 1.80)"
+            />
+            <button
+              (click)="calculate()"
+              class="btn class btn btn-outline-dark mt-3"
+            >
+              Calcular
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+    <p
+      id="desc"
+      class="hidden fw-bolder text-center mx-auto mt-3 w-50 red"
+    >
+      {{ description }}
+    </p>
+    <p id="result" class="hidden text-center mx-auto mt-3 w-50">
+      Para um peso de
+      <strong>{{ weight.toLocaleString('pt-BR', {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+}) }}</strong>
+      quilogramas e uma altura de
+      <strong>{{ height.toLocaleString('pt-BR', {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+}) }}</strong>
+      metros, o IMC é:
+      <strong>{{ result }}</strong>
+
+      Você está no grupo: <strong>{{ description }}</strong>
+      <br />
+      <strong class="mx-auto text-center">
+        <i class="bi bi-star-fill"></i>
+      </strong>
+    </p>
+  </section>
+</main>
